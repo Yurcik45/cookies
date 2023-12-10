@@ -4,11 +4,13 @@ const app = express()
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080")
+  res.setHeader("Access-Control-Allow-Credentials", true)
 
   next()
 })
 
 app.get("/", (req, res) => {
+  res.setHeader("Set-Cookie", "serv=cook; Max-Age=36000; Secure;")
   res.json("hello from /")
 })
 
